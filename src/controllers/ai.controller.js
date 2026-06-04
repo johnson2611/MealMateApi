@@ -1,4 +1,3 @@
-// src/controllers/ai.controller.js
 const Groq = require('groq-sdk');
 const { z } = require('zod');
 

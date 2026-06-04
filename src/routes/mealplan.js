@@ -1,4 +1,3 @@
-// src/routes/mealplan.js
 const router = require('express').Router();
 const {
   getWeeklyPlan,

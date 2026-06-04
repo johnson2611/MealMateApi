@@ -1,4 +1,3 @@
-// src/middleware/errorHandler.js
 const { ZodError } = require('zod');
 
 const errorHandler = (err, req, res, next) => {

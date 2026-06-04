@@ -1,4 +1,3 @@
-// src/controllers/recipes.controller.js
 const { z } = require('zod');
 const prisma = require('../config/prisma');
 

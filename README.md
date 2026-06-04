@@ -1,8 +1,8 @@
 # 🍽️ MealMate API
 
-A production-grade REST API for smart meal planning and recipe discovery. Built with Node.js, Express, PostgreSQL (Prisma), Socket.io, and AI-powered features via Claude.
+A production-grade REST API for smart meal planning and recipe discovery. Built with Node.js, Express, PostgreSQL (Prisma), Socket.io, and AI-powered features via groq.
 
-## ✨ Features
+## Features
 
 - **JWT Authentication** — Secure register/login with access & refresh tokens
 - **Recipe CRUD** — Full management of personal recipes with pagination & search
@@ -14,13 +14,13 @@ A production-grade REST API for smart meal planning and recipe discovery. Built 
 - **Rate Limiting** — Global + per-endpoint limits
 - **Input Validation** — Zod schemas on all endpoints
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 18+
 - PostgreSQL database
 - Spoonacular API key (free at [spoonacular.com](https://spoonacular.com/food-api))
-- Anthropic API key (at [console.anthropic.com](https://console.anthropic.com))
+- groq API key (at [console.anthropic.com](https://console.groq.com))
 
 ### Installation
 
@@ -30,7 +30,7 @@ cd mealmate-api
 npm install
 
 # Set up environment variables
-cp .env.example .env
+.env
 # Edit .env with your values
 
 # Set up database
@@ -47,7 +47,7 @@ npm run dev
 npm test
 ```
 
-## 📚 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description | Auth |
 |--------|----------|-------------|------|
@@ -73,7 +73,7 @@ npm test
 | GET | `/health` | Health check | ❌ |
 | GET | `/api/docs` | Swagger UI | ❌ |
 
-## 🔌 WebSocket (Real-time Kitchen)
+## WebSocket (Real-time Kitchen)
 
 Connect to `/kitchen` namespace with JWT auth:
 
@@ -88,7 +88,7 @@ socket.emit('chat_message', { message: 'The onions are ready!' });
 socket.emit('start_timer', { duration: 300, label: 'Simmer sauce' });
 ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Runtime**: Node.js
 - **Framework**: Express.js
@@ -102,7 +102,7 @@ socket.emit('start_timer', { duration: 300, label: 'Simmer sauce' });
 - **Testing**: Jest + Supertest
 - **Deployment**: Railway / Render / Fly.io
 
-## 🚀 Deployment
+## Deployment
 
 ```bash
 # Build
@@ -114,7 +114,7 @@ npx prisma migrate deploy
 npm start
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/

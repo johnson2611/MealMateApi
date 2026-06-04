@@ -1,4 +1,3 @@
-// src/sockets/kitchen.js
 const jwt = require('jsonwebtoken');
 
 const kitchenRooms = new Map(); // roomId -> { users, currentStep, recipe, messages }

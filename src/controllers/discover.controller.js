@@ -1,4 +1,3 @@
-// src/controllers/discover.controller.js
 const axios = require('axios');
 
 const spoonacular = axios.create({

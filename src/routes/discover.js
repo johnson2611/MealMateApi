@@ -1,4 +1,3 @@
-// src/routes/discover.js
 const router = require('express').Router();
 const { searchRecipes, getRecipeDetails, getRandomRecipes } = require('../controllers/discover.controller');
 const { authenticate } = require('../middleware/auth');

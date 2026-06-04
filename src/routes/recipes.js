@@ -1,4 +1,3 @@
-// src/routes/recipes.js
 const router = require('express').Router();
 const {
   getAllRecipes,

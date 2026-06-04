@@ -1,4 +1,3 @@
-// src/routes/ai.js
 const router = require('express').Router();
 const { suggestRecipes, generateShoppingList, analyzeMealPlan } = require('../controllers/ai.controller');
 const { authenticate } = require('../middleware/auth');
