@@ -1,0 +1,83 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String     @id @default(uuid())
+  email        String     @unique
+  name         String
+  passwordHash String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  recipes      Recipe[]
+  mealPlans    MealPlan[]
+
+  @@map("users")
+}
+
+model Recipe {
+  id           String   @id @default(uuid())
+  title        String
+  description  String?
+  ingredients  Json     // array of { name, quantity, unit }
+  instructions String[]
+  prepTime     Int?     // minutes
+  cookTime     Int?     // minutes
+  servings     Int?
+  imageUrl     String?
+  tags         String[]
+  isPublic     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  mealPlanItems MealPlanItem[]
+
+  @@map("recipes")
+}
+
+model MealPlan {
+  id        String   @id @default(uuid())
+  weekStart DateTime // Monday of the week
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  items     MealPlanItem[]
+
+  @@unique([userId, weekStart])
+  @@map("meal_plans")
+}
+
+model MealPlanItem {
+  id         String   @id @default(uuid())
+  dayOfWeek  Int      // 0=Mon, 1=Tue, ... 6=Sun
+  mealType   String   // breakfast, lunch, dinner, snack
+  notes      String?
+
+  mealPlanId String
+  mealPlan   MealPlan @relation(fields: [mealPlanId], references: [id], onDelete: Cascade)
+
+  recipeId   String?
+  recipe     Recipe?  @relation(fields: [recipeId], references: [id])
+
+  // For external (Spoonacular) recipes
+  externalRecipeId    String?
+  externalRecipeTitle String?
+  externalRecipeImage String?
+
+  @@map("meal_plan_items")
+}
