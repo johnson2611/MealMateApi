@@ -12,7 +12,7 @@ const options = {
     },
     servers: [
       { url: 'http://localhost:3000', description: 'Development' },
-      { url: 'https://your-deployed-url.com', description: 'Production' },
+      { url: 'https://mealmateapi-2o77.onrender.com/api/docs', description: 'Production' },
     ],
     components: {
       securitySchemes: {
